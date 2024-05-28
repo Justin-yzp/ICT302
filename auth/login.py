@@ -1,7 +1,6 @@
 import streamlit as st
 from db.db_handler import validate_user
 
-
 def login():
     st.title("Login")
 
@@ -13,6 +12,11 @@ def login():
             st.success("Login successful")
             st.session_state['logged_in'] = True
             st.session_state['username'] = username
-            st.session_state['page'] = 'dashboard'
+
+            # Redirect to the register page if the user is an admin
+            if username == 'admin':  # Replace with actual admin username check
+                st.session_state['page'] = 'register'
+            else:
+                st.session_state['page'] = 'dashboard'
         else:
             st.error("Invalid username or password")

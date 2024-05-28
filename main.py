@@ -2,6 +2,7 @@ import streamlit as st
 from auth.login import login
 from pages.dashboard import dashboard
 from pages.rag import rag
+from pages.register import register
 
 st.sidebar.title("Navigation")
 
@@ -20,6 +21,8 @@ elif st.session_state['page'] == 'dashboard':
     dashboard()
 elif st.session_state['page'] == 'rag':
     rag()
+elif st.session_state['page'] == 'register':
+    register()
 
 if st.session_state['logged_in']:
     st.sidebar.button("Logout", on_click=lambda: st.session_state.update({'logged_in': False, 'username': '', 'page': 'login'}))
